@@ -28,9 +28,14 @@ public class CardController {
     }
 
     @PutMapping("/{id}")
-    public Card updateCard(@PathVariable long id, @RequestBody CardRequestDto request) {
+    public void updateCard(@PathVariable long id, @RequestBody CardRequestDto request) {
+        try {
+            cardRepository.getCards().stream().filter(c -> c.getId() == id).findFirst().orElseThrow(() -> new Exception("Card not found"));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         Card card = new Card(request.getCollection(), request.getName(), new java.math.BigDecimal(request.getPrice()));
-        return cardRepository.updateCard(id, card);
+        cardRepository.updateCard(id, card);
     }
 
     @DeleteMapping("/{id}")

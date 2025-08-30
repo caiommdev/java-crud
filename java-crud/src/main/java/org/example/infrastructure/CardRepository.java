@@ -24,11 +24,11 @@ public class CardRepository {
         }
     }
 
-    public Card updateCard(long id, Card card) {
+    public void updateCard(long id, Card card) {
         for (int i = 0; i < cards.size(); i++) {
             if (cards.get(i).getId() == id) {
                 cards.set(i, card);
-                return card;
+                return;
             }
         }
     }
