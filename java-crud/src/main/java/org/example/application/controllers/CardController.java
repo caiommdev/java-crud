@@ -23,13 +23,13 @@ public class CardController {
 
     @PostMapping
     public void addCard(@RequestBody CardRequestDto request) {
-        Card card = new Card(request.getCollection(), request.getName(), new java.math.BigDecimal(request.price()))
+        Card card = new Card(request.getCollection(), request.getName(), new java.math.BigDecimal(request.getPrice()));
         cardRepository.addCard(card);
     }
 
     @PutMapping("/{id}")
     public Card updateCard(@PathVariable long id, @RequestBody CardRequestDto request) {
-        Card card = new Card(request.getCollection(), request.getName(), new java.math.BigDecimal(request.price()))
+        Card card = new Card(request.getCollection(), request.getName(), new java.math.BigDecimal(request.getPrice()));
         return cardRepository.updateCard(id, card);
     }
 
