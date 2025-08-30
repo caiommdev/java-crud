@@ -1,9 +1,11 @@
 package org.example.infrastructure;
 
 import org.example.domain.entities.Card;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
+@Repository
 public class CardRepository {
     ArrayList<Card> cards = new ArrayList<>();
 
